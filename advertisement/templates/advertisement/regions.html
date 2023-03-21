@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+    {% for region in regions %}
+        <li>{{ region }}</li>
+    {% endfor %}
+    </ul>
+    <form action="" method="post">
+        {% csrf_token  %}
+        <input name="region" placeholder="Регион" type="text"/>
+        <input type="submit" value="Добавить"/>
+    </form>
+</body>
+</html>

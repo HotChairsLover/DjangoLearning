@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты</title>
+</head>
+<body>
+    {% load dict_key %}
+    <h1>Телефон: {{  data|dict_key:'phone'}}</h1>
+    <h1>Почта: {{  data|dict_key:'email'}}</h1>
+</body>
+</html>
