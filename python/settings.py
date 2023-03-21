@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'python.middleware.filter_ip_address.FilterIpAddress',
     'python.middleware.request_cooldown.RequestCooldownMiddleware',
     'python.middleware.error_on_to_many_requests.ErrorOnToManyRequestsMiddleware',
+    'python.middleware.user_logger.UserLogger',
 ]
 
 ROOT_URLCONF = 'python.urls'
