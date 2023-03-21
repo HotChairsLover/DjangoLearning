@@ -5,8 +5,7 @@
     <title>Контакты</title>
 </head>
 <body>
-    {% load dict_key %}
-    <h1>Телефон: {{  data|dict_key:'title'}}</h1>
-    <h1>Почта: {{  data|dict_key:'desc'}}</h1>
+    <h1>Телефон: {{ title }}</h1>
+    <h1>Почта: {{ desc }}</h1>
 </body>
 </html>

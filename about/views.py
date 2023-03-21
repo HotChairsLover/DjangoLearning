@@ -1,6 +1,13 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def about_post(request, *args, **kwargs):
-    info = {"title": "Название компании", "desc": "Описание компании"}
-    return render(request, "about/index.html", {'data': info})
+class About(TemplateView):
+    template_name = "about/index.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Название компании"
+        context["desc"] = "Описание компанииииииииииии"
+
+        return context
