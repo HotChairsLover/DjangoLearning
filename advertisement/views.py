@@ -4,6 +4,8 @@ from django.http import HttpResponse
 
 advertisements = ["Продам гараж", "Продам отель", "Продам собаку", "Куплю Олега"]
 advertisements_add_count = 0
+categories = ["Мебель", "Недвижимость", "Что-то"]
+regions = ["Москва", "Пермь", "СПБ"]
 
 
 class AdvertisementList(View):
@@ -18,6 +20,13 @@ class AdvertisementList(View):
         advertisements_add_count += 1
         return render(request, "advertisement/advertisement_list.html", {"advertisements": advertisements,
                                                                          "advertisements_add_count": advertisements_add_count})
+
+
+class AdvertisementFilter(View):
+
+    def get(self, request):
+        return render(request, "advertisement/index.html", {"categories": categories,
+                                                     "regions": regions})
 
 
 def advertisement_post(resuqest, *args, **kwargs):

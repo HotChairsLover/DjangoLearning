@@ -1,6 +1,13 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def contacts_post(request, *args, **kwargs):
-    info = {"phone": "88005553535", "email": "mail@mail.com"}
-    return render(request, "contacts/index.html", {'data': info})
+class Contacts(TemplateView):
+    template_name = "contacts/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["phone"] = "88005553535"
+        context["email"] = "mail@mail.ru"
+
+        return context

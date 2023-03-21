@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Объявления</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <select name="region">
+            {% for region in regions %}
+            <option value="{{ region }}">{{ region }}</option>
+            {% endfor %}
+        </select>
+        <select name="category">
+            {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="title" placeholder="Название объявления">
+        <input type="submit" value="Найти">
+    </form>
+</body>
+</html>
