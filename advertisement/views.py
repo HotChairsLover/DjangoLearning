@@ -2,9 +2,22 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 
+advertisements = ["Продам гараж", "Продам отель", "Продам собаку", "Куплю Олега"]
+advertisements_add_count = 0
 
-def advertisement_list(request, *args, **kwargs):
-    return render(request, "advertisement/advertisement_list.html", {})
+
+class AdvertisementList(View):
+
+    def get(self, request):
+        return render(request, "advertisement/advertisement_list.html", {"advertisements": advertisements,
+                                                                         "advertisements_add_count": advertisements_add_count})
+
+    def post(self, request):
+        global advertisements_add_count
+        advertisements.append(request.POST.get("advertisement"))
+        advertisements_add_count += 1
+        return render(request, "advertisement/advertisement_list.html", {"advertisements": advertisements,
+                                                                         "advertisements_add_count": advertisements_add_count})
 
 
 def advertisement_post(resuqest, *args, **kwargs):
