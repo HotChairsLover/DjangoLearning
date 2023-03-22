@@ -8,7 +8,7 @@
     <ol>
         {% for advertisement in advertisements %}
             <li>
-                {{ advertisement.title }} Цена: {{ advertisement.price }}
+                <a href="advertisement/{{ advertisement.id }}">{{ advertisement.title }}</a> Цена: {{ advertisement.price }}
                 <p> {{ advertisement.description }}</p>
                 <p>Дата создания: {{ advertisement.created_at }}</p>
                 <p>Регионы: {% for region in advertisement.region.all %} {{region.name}}, {% endfor %}</p>
@@ -18,11 +18,5 @@
             </li>
         {% endfor %}
     </ol>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input name="advertisement" type="text" placeholder="Текст объявления">
-        <input type="submit" value="Добавить объявление">
-    </form>
-    <h3>Количество добавлений {{ advertisements_add_count }}</h3>
 </body>
 </html>

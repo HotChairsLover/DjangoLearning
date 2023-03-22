@@ -1,7 +1,7 @@
 import random
 
 from django.shortcuts import render
-from django.views import View
+from django.views import View, generic
 from django.http import HttpResponse
 from advertisement.models import *
 
@@ -9,6 +9,7 @@ from advertisement.models import *
 advertisements_add_count = 0
 categories = ["Мебель", "Недвижимость", "Что-то"]
 regions = ["Москва", "Пермь", "СПБ"]
+
 
 
 class AdvertisementDetailed(View):
@@ -19,23 +20,14 @@ class AdvertisementDetailed(View):
         return render(request, "advertisement/post.html", {"advertisement": random_advertisement})
 
 
-class AdvertisementList(View):
+class AdvertisementListView(generic.ListView):
+    model = Advertisement
+    context_object_name = "advertisements"
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.advertisements = Advertisement.objects.all()
 
-    def get(self, request):
-
-        return render(request, "advertisement/advertisement_list.html", {"advertisements": self.advertisements,
-                                                                         "advertisements_add_count": advertisements_add_count})
-
-    def post(self, request):
-        #global advertisements_add_count
-        #advertisements.append(request.POST.get("advertisement"))
-        #advertisements_add_count += 1
-        return render(request, "advertisement/advertisement_list.html", {"advertisements": self.advertisements,
-                                                                         "advertisements_add_count": advertisements_add_count})
+class AdvertisementDetailView(generic.DetailView):
+    model = Advertisement
+    template_name = "advertisement/post.html"
 
 
 class AdvertisementFilter(View):
