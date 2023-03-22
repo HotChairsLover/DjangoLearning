@@ -8,5 +8,22 @@ class Advertisement(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     price = models.FloatField(verbose_name="цена", default=0)
     views_count = models.IntegerField(verbose_name="количество просмотров", default=0)
+    status = models.ForeignKey("AdvertisementStatus", default=None, null=True, on_delete=models.CASCADE,
+                               related_name="advertisements")
+    region = models.ManyToManyField("Region")
+    type = models.ForeignKey("AdvertisementType", default=None, null=True, on_delete=models.CASCADE,
+                             related_name="advertisements")
+
+
+class AdvertisementStatus(models.Model):
+    name = models.CharField(max_length=100)
+
+
+class Region(models.Model):
+    name = models.CharField(max_length=200)
+
+
+class AdvertisementType(models.Model):
+    name = models.CharField(max_length=100)
 
 

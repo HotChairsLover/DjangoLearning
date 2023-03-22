@@ -11,6 +11,9 @@
                 {{ advertisement.title }} Цена: {{ advertisement.price }}
                 <p> {{ advertisement.description }}</p>
                 <p>Дата создания: {{ advertisement.created_at }}</p>
+                <p>Регионы: {% for region in advertisement.region.all %} {{region.name}}, {% endfor %}</p>
+                <p>Тип: {{ advertisement.type.name }}</p>
+                <p>Статус: {{ advertisement.status.name }}</p>
                 <p>Количество просмотров: {{ advertisement.views_count }}</p>
             </li>
         {% endfor %}
