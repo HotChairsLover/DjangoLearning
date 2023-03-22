@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>Продам гараж</h1>
+    <h1>{{ advertisement.title }}</h1>
+    <p>Цена: {{ advertisement.price }}</p>
+    <p> {{ advertisement.description }}</p>
+    <p>Дата создания: {{ advertisement.created_at }}</p>
+    <p>Количество просмотров: {{ advertisement.views_count }}</p>
 </body>
 </html>
