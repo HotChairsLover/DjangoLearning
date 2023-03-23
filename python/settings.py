@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'advertisement',
     'contacts',
     'about',
+    'app_users',
 ]
 
 MIDDLEWARE = [
@@ -51,8 +52,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'python.middleware.filter_ip_address.FilterIpAddress',
-    'python.middleware.request_cooldown.RequestCooldownMiddleware',
-    'python.middleware.error_on_to_many_requests.ErrorOnToManyRequestsMiddleware',
+    #'python.middleware.request_cooldown.RequestCooldownMiddleware',
+    #'python.middleware.error_on_to_many_requests.ErrorOnToManyRequestsMiddleware',
     'python.middleware.user_logger.UserLogger',
 ]
 
@@ -124,6 +125,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+LOGIN_REDIRECT_URL = "/advertisement"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

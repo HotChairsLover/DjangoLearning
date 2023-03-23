@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+{% if request.user.is_authenticated %}
+    <a href="{% url "user_logout" %}">Выйти</a>
+    <h2>{{ request.user.username }}</h2>
     <ol>
         {% for advertisement in advertisements %}
             <li>
@@ -18,5 +21,10 @@
             </li>
         {% endfor %}
     </ol>
+{% else %}
+    <h3>Не авторизован</h3>
+    <a href="{% url "user_login" %}">Войти</a>
+    <a href="{% url "user_register" %}">Регистрация</a>
+{% endif %}
 </body>
 </html>
